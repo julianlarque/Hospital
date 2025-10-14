@@ -29,6 +29,7 @@ namespace Hospital
         public void AddPaciente(Paciente pac1)
         {
             Pacs.Add(pac1);
+            Console.WriteLine($"Añadimos a mi lista {pac1}");
         }
 
 

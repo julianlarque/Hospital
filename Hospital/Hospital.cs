@@ -101,26 +101,53 @@ namespace Hospital
         {
 
             bool existe = false;
-            Medico especialista = new Medico();
-
+            Paciente pacien = new Paciente();
             Console.Clear();
             Console.WriteLine("### ASIGNACIÓN DE PACIENTES A MÉDICOS ####");
             Console.WriteLine("-------------------------------------------");
             Console.WriteLine();
 
-            Console.Write("Primer Apellido del Médico: ");
+            Console.Write("Primer Apellido del Paciente: ");
+            string apePac = Console.ReadLine();
+
+            Console.WriteLine();
+
+            //Buscamos el paciente en la lista de pacientes
+            //Paciente pac1;
+            foreach (Paciente pac1 in PacList)
+            {
+                if (pac1.Apellido1 == apePac)
+                {
+                    pacien = pac1;  
+                    Console.WriteLine($"Asignamos el paciente {pac1}");
+                    Console.WriteLine($"Asignamos el paciente {pacien}");
+                    existe = true;
+                    break;
+                }
+            }
+
+            if (!existe)
+            {
+                Console.WriteLine($"Error, paciente de apellido {apePac} no encontrado!!!");
+                Console.ReadKey();
+                return;
+            }
+                
+            Console.Write("Primer Apellido del Médico a asignar: ");
             string ape1 = Console.ReadLine();
 
             Console.WriteLine();
 
             //Buscamos el médico en la lista de médicos
+            existe = false;
             foreach (Medico med in MedicoList)
             {
                 if (med.Apellido1 == ape1)
                 {
                     //MedicoList.Remove(med);
-                    especialista = med;
+                    //especialista = med;
                     Console.WriteLine($"Nuevo paciente para {med}");
+                    med.AddPaciente(pacien);
                     existe = true;
                     break;
                 }
@@ -129,68 +156,14 @@ namespace Hospital
             if (!existe)
             {
                 Console.WriteLine($"Error, médico de apellido {ape1} no encontrado!!!");
+                Console.WriteLine($"Imposible la asignación");
                 Console.ReadKey();
                 return;
             }
             
-            existe = false;
-
-            Console.Write("Primer Apellido del Paciente: ");
-            string ape2 = Console.ReadLine();
-
-            Console.WriteLine();
-
-            //Buscamos el paciente en la lista de pacientes
-
-            foreach (Paciente pac1 in PacList)
-            {
-                if (pac1.Apellido1 == ape2)
-                {
-                    //PacList.Remove(pac1);
-                    Console.WriteLine($"Asignamos el paciente {pac1} a {especialista}");
-                    existe = true;
-                    break;
-                }
-            }
-
-            if (!existe)
-                Console.WriteLine($"Error, paciente de apellido {ape1} no encontrado!!!");
-
-
-
-
-
-
-            foreach (Medico med in MedicoList)
-            {
-                if (med.Apellido1 == ape1)
-                {
-                    //MedicoList.Remove(med);
-                    Console.WriteLine($"Nuevo paciente para {med}");
-                    existe = true;
-                    break;
-                }
-            }
-
-            if (!existe)
-            {
-                Console.WriteLine($"Error, médico de apellido {ape1} no encontrado!!!");
-                Console.ReadKey();
-                return;
-            }
-
-
-
-
-
-
-
             Console.WriteLine();
             Console.WriteLine("Pulsa cualquier tecla para continuar");
             Console.ReadKey();
-
-
-
 
         }
 

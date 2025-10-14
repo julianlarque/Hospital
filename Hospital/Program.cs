@@ -44,6 +44,10 @@ namespace Hospital
                         miHospital.BajaPaciente();
                         break;
 
+                    case '5':
+                        miHospital.AsignacionPaciente();
+                        break;
+
                     case '6':
                         miHospital.ListaMedicos();
                         break;

@@ -28,7 +28,7 @@ namespace Hospital
                     5 - Asignar Médico a Paciente
                     6 - Lista Médicos
                     7 - Lista Pacientes
-                    8 - 
+                    8 - Lista Pacientes por Médico
                     9 - 
 
                     S - Salir

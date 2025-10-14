@@ -10,6 +10,11 @@ namespace Hospital
     {
         public List<string> Enfermedades;
 
+        public Paciente()
+        {
+
+        }
+
         public Paciente(string nom, string ape1, string ape2) : base(nom, ape1, ape2) 
         { 
             Enfermedades = new List<string>();
