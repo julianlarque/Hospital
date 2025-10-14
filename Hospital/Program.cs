@@ -10,6 +10,27 @@ namespace Hospital
     {
         static void Main(string[] args)
         {
+            Hospital miHospital = new Hospital("Hospital de Barcelona");
+
+            miHospital.CargaInicMedicos();
+            miHospital.CargaInicPacientes();
+
+            //miHospital.AltaMedico();
+            //miHospital.ListaMedicos();
+
+            miHospital.AltaPaciente();
+            miHospital.ListaPacientes();
+
+
+            /*
+            Menu miMenu = new Menu();
+            miMenu.Opcion();
+
+            */
+
+            Console.ReadKey();
+
+
         }
     }
 }

@@ -21,5 +21,12 @@ namespace Hospital
 
         }
 
+        public override string ToString()
+        {
+            return $"Doctor {Nombre} {Apellido1} {Apellido2} de especialidad {Especialidad}";
+        }
+
+
+
     }
 }

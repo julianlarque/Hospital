@@ -14,5 +14,11 @@ namespace Hospital
         { 
             Enfermedades = new List<string>();
         }
+
+        public override string ToString()
+        {
+            return $"Paciente {Nombre} {Apellido1} {Apellido2}";
+        }
+
     }
 }
