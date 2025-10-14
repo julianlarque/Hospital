@@ -59,8 +59,42 @@ namespace Hospital
                 if (seleccion == 'S')
                     break;
             }
+        }
 
-            //Console.ReadKey();
+        public void BajaMedico()
+        {
+            bool existe = false;
+
+            Console.Clear();
+            Console.WriteLine("### BAJA DE MÉDICOS ####");
+            Console.WriteLine("------------------------");
+            Console.WriteLine();
+            
+            Console.Write("Primer Apellido : ");
+            string ape1 = Console.ReadLine();
+
+            Console.WriteLine();
+
+            //Buscamos el médico en la lista de médicos
+            foreach (Medico med in MedicoList) 
+            {
+                if (med.Apellido1 == ape1)
+                {
+                    MedicoList.Remove(med);
+                    Console.WriteLine($"Damos de baja a {med}");
+                    existe = true;
+                    break;
+                }
+            }
+
+            if (!existe)
+                Console.WriteLine($"Error, médico de apellido {ape1} no encontrado!!!");
+
+            Console.WriteLine();
+            Console.WriteLine("Pulsa cualquier tecla para continuar");
+            Console.ReadKey();
+
+
         }
 
         public void AltaPaciente()
@@ -99,7 +133,41 @@ namespace Hospital
 
             //Console.ReadKey();
         }
+        public void BajaPaciente()
+        {
+            bool existe = false;
 
+            Console.Clear();
+            Console.WriteLine("### BAJA DE PACIENTES ####");
+            Console.WriteLine("--------------------------");
+            Console.WriteLine();
+
+            Console.Write("Primer Apellido : ");
+            string ape1 = Console.ReadLine();
+
+            Console.WriteLine();
+
+            //Buscamos el paciente en la lista de pacientes
+            foreach (Paciente pac1 in PacList)
+            {
+                if (pac1.Apellido1 == ape1)
+                {
+                    PacList.Remove(pac1);
+                    Console.WriteLine($"Damos de baja a {pac1}");
+                    existe = true;
+                    break;
+                }
+            }
+
+            if (!existe)
+                Console.WriteLine($"Error, paciente de apellido {ape1} no encontrado!!!");
+
+            Console.WriteLine();
+            Console.WriteLine("Pulsa cualquier tecla para continuar");
+            Console.ReadKey();
+
+
+        }
 
         public void CargaInicMedicos()
         {
