@@ -13,6 +13,11 @@ namespace Hospital
         // Lista de pacientes asignados al médico
         public List<Paciente> Pacs;
 
+        public Medico()
+        {
+
+        }
+
         public Medico(string nom, string ape1, string ape2, string especialidad) : base(nom, ape1, ape2, "Médico")
         {
 
@@ -20,6 +25,12 @@ namespace Hospital
             Pacs = new List<Paciente>();
 
         }
+
+        public void AddPaciente(Paciente pac1)
+        {
+            Pacs.Add(pac1);
+        }
+
 
         public override string ToString()
         {

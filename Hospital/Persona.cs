@@ -15,6 +15,11 @@ namespace Hospital
         public string Telefono = "";
         public string Direccion = "";
 
+        public Persona()
+        {
+
+        }
+
         public Persona(string nombre, string apellido1, string apellido2)
         {
             Nombre = nombre;

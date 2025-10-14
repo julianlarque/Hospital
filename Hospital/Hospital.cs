@@ -97,6 +97,103 @@ namespace Hospital
 
         }
 
+        public void AsignacionPaciente()
+        {
+
+            bool existe = false;
+            Medico especialista = new Medico();
+
+            Console.Clear();
+            Console.WriteLine("### ASIGNACIÓN DE PACIENTES A MÉDICOS ####");
+            Console.WriteLine("-------------------------------------------");
+            Console.WriteLine();
+
+            Console.Write("Primer Apellido del Médico: ");
+            string ape1 = Console.ReadLine();
+
+            Console.WriteLine();
+
+            //Buscamos el médico en la lista de médicos
+            foreach (Medico med in MedicoList)
+            {
+                if (med.Apellido1 == ape1)
+                {
+                    //MedicoList.Remove(med);
+                    especialista = med;
+                    Console.WriteLine($"Nuevo paciente para {med}");
+                    existe = true;
+                    break;
+                }
+            }
+
+            if (!existe)
+            {
+                Console.WriteLine($"Error, médico de apellido {ape1} no encontrado!!!");
+                Console.ReadKey();
+                return;
+            }
+            
+            existe = false;
+
+            Console.Write("Primer Apellido del Paciente: ");
+            string ape2 = Console.ReadLine();
+
+            Console.WriteLine();
+
+            //Buscamos el paciente en la lista de pacientes
+
+            foreach (Paciente pac1 in PacList)
+            {
+                if (pac1.Apellido1 == ape2)
+                {
+                    //PacList.Remove(pac1);
+                    Console.WriteLine($"Asignamos el paciente {pac1} a {especialista}");
+                    existe = true;
+                    break;
+                }
+            }
+
+            if (!existe)
+                Console.WriteLine($"Error, paciente de apellido {ape1} no encontrado!!!");
+
+
+
+
+
+
+            foreach (Medico med in MedicoList)
+            {
+                if (med.Apellido1 == ape1)
+                {
+                    //MedicoList.Remove(med);
+                    Console.WriteLine($"Nuevo paciente para {med}");
+                    existe = true;
+                    break;
+                }
+            }
+
+            if (!existe)
+            {
+                Console.WriteLine($"Error, médico de apellido {ape1} no encontrado!!!");
+                Console.ReadKey();
+                return;
+            }
+
+
+
+
+
+
+
+            Console.WriteLine();
+            Console.WriteLine("Pulsa cualquier tecla para continuar");
+            Console.ReadKey();
+
+
+
+
+        }
+
         public void AltaPaciente()
         {
             string nom1;

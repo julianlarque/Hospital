@@ -11,6 +11,11 @@ namespace Hospital
         public double Sueldo = 0;
         public string Departamento;
 
+        public Empleado()
+        {
+
+        }
+
         public Empleado(string nom, string ape1, string ape2, string dept) : base (nom,ape1,ape2) 
         {
             Departamento = dept;
