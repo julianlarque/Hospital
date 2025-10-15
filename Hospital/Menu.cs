@@ -29,7 +29,7 @@ namespace Hospital
                     6 - Lista Médicos
                     7 - Lista Pacientes
                     8 - Lista Pacientes por Médico
-                    9 - 
+                    9 - Listado completo Personas
 
                     S - Salir
 

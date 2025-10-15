@@ -16,6 +16,7 @@ namespace Hospital
 
             miHospital.CargaInicMedicos();
             miHospital.CargaInicPacientes();
+            miHospital.CargaInicAdmin();
 
             Menu miMenu = new Menu();
 
@@ -58,6 +59,10 @@ namespace Hospital
 
                     case '8':
                         miHospital.PacsporMedico();
+                        break;
+
+                    case '9':
+                        miHospital.ListadoGeneral();
                         break;
                 }
             }

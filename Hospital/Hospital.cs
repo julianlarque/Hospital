@@ -266,6 +266,23 @@ namespace Hospital
             Console.WriteLine("Pulsa cualquier tecla para continuar");
             Console.ReadKey();
         }
+
+        public void ListadoGeneral()
+        {
+            //ListaPacientes();
+            //ListaMedicos();
+            Console.Clear();
+
+            foreach (Paciente pac in PacList)
+                Console.WriteLine(pac);
+            foreach (Medico med in MedicoList)
+                Console.WriteLine(med);
+            foreach (Administrativo ad in AdminList)
+                Console.WriteLine(ad);
+
+            Console.ReadKey();
+
+        }
         public void CargaInicMedicos()
         {
             MedicoList.Add(new Medico("Manuel","López","Carrasco","Ginecología"));
@@ -301,6 +318,20 @@ namespace Hospital
             PacList.Add(new Paciente("Raúl", "Reyes", "Ortega"));
             PacList.Add(new Paciente("Nuria", "Flores", "Campos"));
             PacList.Add(new Paciente("Daniel", "Cruz", "Santiago"));
+        }
+
+        public void CargaInicAdmin()
+        {
+            AdminList.Add(new Administrativo("Manuel", "Crespo", "Martí", "Informática"));
+            AdminList.Add(new Administrativo("Pedro", "Luna", "Mas", "Contabilidad"));
+            AdminList.Add(new Administrativo("Laura", "Sánchez", "Ruiz", "Recursos Humanos"));
+            AdminList.Add(new Administrativo("Carlos", "Moreno", "Díaz", "Finanzas"));
+            AdminList.Add(new Administrativo("María", "Gómez", "Navarro", "Marketing"));
+            AdminList.Add(new Administrativo("Javier", "Torres", "Pérez", "Compras"));
+            AdminList.Add(new Administrativo("Lucía", "Romero", "Castillo", "Logística"));
+            AdminList.Add(new Administrativo("Andrés", "Fernández", "Gil", "Atención al Cliente"));
+            AdminList.Add(new Administrativo("Sofía", "Vega", "Ortega", "Legal"));
+            AdminList.Add(new Administrativo("Elena", "Martínez", "Ramos", "Informática"));
         }
         public void ListaMedicos()
         {
