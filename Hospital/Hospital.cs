@@ -110,7 +110,6 @@ namespace Hospital
             Console.WriteLine();
 
             //Buscamos el paciente en la lista de pacientes
-            //Paciente pac1;
             foreach (Paciente pac1 in PacList)
             {
                 if (pac1.Apellido1 == apePac)
@@ -128,7 +127,13 @@ namespace Hospital
                 Console.ReadKey();
                 return;
             }
-                
+            // Mostramos los médicos disponibles
+            Console.WriteLine();    
+            Console.WriteLine("Médicos disponibles:");
+            foreach (Medico med in MedicoList)
+                Console.WriteLine(med);
+
+            Console.WriteLine();    
             Console.Write("Primer Apellido del Médico a asignar: ");
             string ape1 = Console.ReadLine();
 
@@ -269,8 +274,6 @@ namespace Hospital
 
         public void ListadoGeneral()
         {
-            //ListaPacientes();
-            //ListaMedicos();
             Console.Clear();
 
             foreach (Paciente pac in PacList)
@@ -326,10 +329,10 @@ namespace Hospital
             AdminList.Add(new Administrativo("Pedro", "Luna", "Mas", "Contabilidad"));
             AdminList.Add(new Administrativo("Laura", "Sánchez", "Ruiz", "Recursos Humanos"));
             AdminList.Add(new Administrativo("Carlos", "Moreno", "Díaz", "Finanzas"));
-            AdminList.Add(new Administrativo("María", "Gómez", "Navarro", "Marketing"));
+            AdminList.Add(new Administrativo("María", "Gómez", "Navarro", "Recursos Humanos"));
             AdminList.Add(new Administrativo("Javier", "Torres", "Pérez", "Compras"));
             AdminList.Add(new Administrativo("Lucía", "Romero", "Castillo", "Logística"));
-            AdminList.Add(new Administrativo("Andrés", "Fernández", "Gil", "Atención al Cliente"));
+            AdminList.Add(new Administrativo("Andrés", "Fernández", "Gil", "Atención al Paciente"));
             AdminList.Add(new Administrativo("Sofía", "Vega", "Ortega", "Legal"));
             AdminList.Add(new Administrativo("Elena", "Martínez", "Ramos", "Informática"));
         }
