@@ -13,14 +13,11 @@ namespace Hospital
 
         public Empleado()
         {
-
         }
 
         public Empleado(string nom, string ape1, string ape2, string dept) : base (nom,ape1,ape2) 
         {
             Departamento = dept;
         }       
-
-
     }
 }

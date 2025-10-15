@@ -93,13 +93,10 @@ namespace Hospital
             Console.WriteLine();
             Console.WriteLine("Pulsa cualquier tecla para continuar");
             Console.ReadKey();
-
-
         }
 
         public void AsignacionPaciente()
         {
-
             bool existe = false;
             Paciente pacien = new Paciente();
             Console.Clear();
@@ -161,7 +158,6 @@ namespace Hospital
             Console.WriteLine();
             Console.WriteLine("Pulsa cualquier tecla para continuar");
             Console.ReadKey();
-
         }
         public void PacsporMedico()
         {
@@ -232,8 +228,6 @@ namespace Hospital
                 if (seleccion == 'S')
                     break;
             }
-
-            //Console.ReadKey();
         }
         public void BajaPaciente()
         {
@@ -257,6 +251,10 @@ namespace Hospital
                     PacList.Remove(pac1);
                     Console.WriteLine($"Damos de baja a {pac1}");
                     existe = true;
+                    
+                    // Lo damos de baja de todos los médicos que lo teangan
+                    foreach (Medico med in MedicoList)
+                        med.BajaPaciente(pac1);
                     break;
                 }
             }
@@ -267,10 +265,7 @@ namespace Hospital
             Console.WriteLine();
             Console.WriteLine("Pulsa cualquier tecla para continuar");
             Console.ReadKey();
-
-
         }
-
         public void CargaInicMedicos()
         {
             MedicoList.Add(new Medico("Manuel","López","Carrasco","Ginecología"));
@@ -284,7 +279,6 @@ namespace Hospital
             MedicoList.Add(new Medico("María", "Ramos", "Pérez", "Oncología"));
             MedicoList.Add(new Medico("Sofía", "Navarro", "Luna", "Endocrinología"));
         }
-
         public void CargaInicPacientes()
         {
             PacList.Add(new Paciente("Eduardo", "Herrera", "Costa"));
@@ -308,7 +302,6 @@ namespace Hospital
             PacList.Add(new Paciente("Nuria", "Flores", "Campos"));
             PacList.Add(new Paciente("Daniel", "Cruz", "Santiago"));
         }
-
         public void ListaMedicos()
         {
             Console.Clear ();
@@ -319,7 +312,6 @@ namespace Hospital
                 Console.WriteLine(med);
 
             Console.ReadKey();
-
         }
         public void ListaPacientes()
         {
@@ -331,10 +323,6 @@ namespace Hospital
                 Console.WriteLine(pac);
 
             Console.ReadKey();
-
         }
     }
-
-
-
 }

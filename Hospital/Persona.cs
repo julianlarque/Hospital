@@ -17,15 +17,13 @@ namespace Hospital
 
         public Persona()
         {
-
         }
 
         public Persona(string nombre, string apellido1, string apellido2)
         {
             Nombre = nombre;
             Apellido1 = apellido1;
-            Apellido2 = apellido2;
-            
+            Apellido2 = apellido2;    
         }
     }
 }

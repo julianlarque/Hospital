@@ -12,7 +12,6 @@ namespace Hospital
 
         public Paciente()
         {
-
         }
 
         public Paciente(string nom, string ape1, string ape2) : base(nom, ape1, ape2) 
@@ -24,6 +23,5 @@ namespace Hospital
         {
             return $"Paciente {Nombre} {Apellido1} {Apellido2}";
         }
-
     }
 }
