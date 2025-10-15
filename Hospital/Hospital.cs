@@ -120,7 +120,6 @@ namespace Hospital
                 {
                     pacien = pac1;  
                     Console.WriteLine($"Asignamos el paciente {pac1}");
-                    Console.WriteLine($"Asignamos el paciente {pacien}");
                     existe = true;
                     break;
                 }
@@ -144,8 +143,6 @@ namespace Hospital
             {
                 if (med.Apellido1 == ape1)
                 {
-                    //MedicoList.Remove(med);
-                    //especialista = med;
                     Console.WriteLine($"Nuevo paciente para {med}");
                     med.AddPaciente(pacien);
                     existe = true;
@@ -166,7 +163,42 @@ namespace Hospital
             Console.ReadKey();
 
         }
+        public void PacsporMedico()
+        {
+            bool existe = false;
+            
+            Console.Clear();
+            Console.WriteLine("### PACIENTES ASIGNADOS A UN MÉDICO ####");
+            Console.WriteLine("----------------------------------------");
+            Console.WriteLine();
 
+            Console.Write("Primer Apellido del Médico: ");
+            string apeMed = Console.ReadLine();
+
+            Console.WriteLine();
+
+            //Buscamos el médico en la lista de médicos
+            existe = false;
+            foreach (Medico med in MedicoList)
+            {
+                if (med.Apellido1 == apeMed)
+                {
+                    Console.WriteLine($"Pacientes asignados a {med}");
+                    foreach (Paciente pac in med.Pacs)
+                        Console.WriteLine(pac);
+                    Console.ReadKey();
+                    existe = true;
+                    break;
+                }
+            }
+
+            if (!existe)
+            {
+                Console.WriteLine($"Error, médico de apellido {apeMed} no encontrado!!!");
+                Console.ReadKey();
+                return;
+            }
+        }
         public void AltaPaciente()
         {
             string nom1;

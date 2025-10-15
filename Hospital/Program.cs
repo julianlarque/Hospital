@@ -56,24 +56,11 @@ namespace Hospital
                         miHospital.ListaPacientes();
                         break;
 
+                    case '8':
+                        miHospital.PacsporMedico();
+                        break;
                 }
             }
-
-            /*        
-
-            miHospital.AltaPaciente();
-            miHospital.ListaPacientes();
-            */
-
-            /*
-            Menu miMenu = new Menu();
-            miMenu.Opcion();
-
-            */
-
-            //Console.ReadKey();
-
-
         }
     }
 }
