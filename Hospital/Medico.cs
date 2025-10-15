@@ -29,13 +29,12 @@ namespace Hospital
         public void AddPaciente(Paciente pac1)
         {
             Pacs.Add(pac1);
-            Console.WriteLine($"Añadimos a mi lista {pac1}");
         }
 
 
         public override string ToString()
         {
-            return $"Doctor {Nombre} {Apellido1} {Apellido2} de especialidad {Especialidad}";
+            return $"Doctor/a {Nombre} {Apellido1} {Apellido2} de especialidad {Especialidad}";
         }
 
 
