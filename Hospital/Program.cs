@@ -25,8 +25,11 @@ namespace Hospital
             
                 seleccion = miMenu.Opcion();
                 if (seleccion == 'S')
+                {
+                    Console.Clear();
                     break;
-
+                }
+                    
                 switch (seleccion)
                 {
                     case '1':

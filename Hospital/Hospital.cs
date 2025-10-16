@@ -10,17 +10,12 @@ namespace Hospital
     internal class Hospital
     {
         public string Nombre;
-        public List<Medico> MedicoList;
-        public List<Administrativo> AdminList;
-        public List<Paciente> PacList;
+        public List<Persona> PersonaList;
 
         public Hospital (string nombre)
         {
             Nombre = nombre;
-
-            MedicoList = new List<Medico> ();
-            AdminList = new List<Administrativo> ();
-            PacList = new List<Paciente> ();
+            PersonaList = new List<Persona>();
         }
 
         public void AltaMedico()
@@ -47,7 +42,7 @@ namespace Hospital
 
                 Medico medic = new Medico(nom1, ape1, ape2, espec);
 
-                MedicoList.Add(medic);
+                PersonaList.Add(medic);
 
                 Console.WriteLine();
                 Console.WriteLine($"Médico creado correctamente con los siguientes datos: \n{medic}");
@@ -76,12 +71,12 @@ namespace Hospital
             Console.WriteLine();
 
             //Buscamos el médico en la lista de médicos
-            foreach (Medico med in MedicoList) 
+            foreach(Persona per in PersonaList)
             {
-                if (med.Apellido1 == ape1)
+                if ((per.Apellido1 == ape1) && (per is Medico))
                 {
-                    MedicoList.Remove(med);
-                    Console.WriteLine($"Damos de baja a {med}");
+                    PersonaList.Remove(per);
+                    Console.WriteLine($"Damos de baja a {per}");
                     existe = true;
                     break;
                 }
@@ -98,7 +93,7 @@ namespace Hospital
         public void AsignacionPaciente()
         {
             bool existe = false;
-            Paciente pacien = new Paciente();
+            Persona pacien = new Persona();
             Console.Clear();
             Console.WriteLine("### ASIGNACIÓN DE PACIENTES A MÉDICOS ####");
             Console.WriteLine("-------------------------------------------");
@@ -110,9 +105,9 @@ namespace Hospital
             Console.WriteLine();
 
             //Buscamos el paciente en la lista de pacientes
-            foreach (Paciente pac1 in PacList)
+            foreach (Persona pac1 in PersonaList)
             {
-                if (pac1.Apellido1 == apePac)
+                if ((pac1.Apellido1 == apePac) && (pac1 is Paciente))
                 {
                     pacien = pac1;  
                     Console.WriteLine($"Asignamos el paciente {pac1}");
@@ -128,10 +123,10 @@ namespace Hospital
                 return;
             }
             // Mostramos los médicos disponibles
-            Console.WriteLine();    
-            Console.WriteLine("Médicos disponibles:");
-            foreach (Medico med in MedicoList)
-                Console.WriteLine(med);
+            //Console.WriteLine();    
+            //Console.WriteLine("Médicos disponibles:");
+            //foreach (Medico med in MedicoList)
+            //    Console.WriteLine(med);
 
             Console.WriteLine();    
             Console.Write("Primer Apellido del Médico a asignar: ");
@@ -141,12 +136,12 @@ namespace Hospital
 
             //Buscamos el médico en la lista de médicos
             existe = false;
-            foreach (Medico med in MedicoList)
+            foreach (Persona per in PersonaList)
             {
-                if (med.Apellido1 == ape1)
+                if ((per.Apellido1 == ape1) && (per is Medico))
                 {
-                    Console.WriteLine($"Nuevo paciente para {med}");
-                    med.AddPaciente(pacien);
+                    Console.WriteLine($"Nuevo paciente para {per}");
+                    ((Medico)per).AddPaciente((Paciente)pacien);
                     existe = true;
                     break;
                 }
@@ -180,12 +175,12 @@ namespace Hospital
 
             //Buscamos el médico en la lista de médicos
             existe = false;
-            foreach (Medico med in MedicoList)
+            foreach (Persona med in PersonaList)
             {
-                if (med.Apellido1 == apeMed)
+                if ((med.Apellido1 == apeMed) && (med is Medico))
                 {
                     Console.WriteLine($"Pacientes asignados a {med}");
-                    foreach (Paciente pac in med.Pacs)
+                    foreach (Paciente pac in ((Medico)med).Pacs)
                         Console.WriteLine(pac);
                     Console.ReadKey();
                     existe = true;
@@ -221,7 +216,7 @@ namespace Hospital
                 
                 Paciente pacien1 = new Paciente(nom1, ape1, ape2);
 
-                PacList.Add(pacien1);
+                PersonaList.Add(pacien1);   
 
                 Console.WriteLine();
                 Console.WriteLine($"Paciente creado correctamente con los siguientes datos: \n{pacien1}");
@@ -249,17 +244,18 @@ namespace Hospital
             Console.WriteLine();
 
             //Buscamos el paciente en la lista de pacientes
-            foreach (Paciente pac1 in PacList)
+            foreach (Persona per in PersonaList)
             {
-                if (pac1.Apellido1 == ape1)
+                if ((per.Apellido1 == ape1) && (per is Paciente))
                 {
-                    PacList.Remove(pac1);
-                    Console.WriteLine($"Damos de baja a {pac1}");
+                    PersonaList.Remove(per);
+                    Console.WriteLine($"Damos de baja a {per}");
                     existe = true;
                     
                     // Lo damos de baja de todos los médicos que lo teangan
-                    foreach (Medico med in MedicoList)
-                        med.BajaPaciente(pac1);
+                    foreach (Persona med in PersonaList) 
+                        if (med is Medico)
+                            ((Medico)med).BajaPaciente((Paciente)per);
                     break;
                 }
             }
@@ -275,66 +271,60 @@ namespace Hospital
         public void ListadoGeneral()
         {
             Console.Clear();
-
-            foreach (Paciente pac in PacList)
-                Console.WriteLine(pac);
-            foreach (Medico med in MedicoList)
-                Console.WriteLine(med);
-            foreach (Administrativo ad in AdminList)
-                Console.WriteLine(ad);
+            foreach (Persona per in PersonaList)
+                Console.WriteLine(per);
 
             Console.ReadKey();
 
         }
         public void CargaInicMedicos()
         {
-            MedicoList.Add(new Medico("Manuel","López","Carrasco","Ginecología"));
-            MedicoList.Add(new Medico("Pedro", "De la Cruz", "Sánchez", "Pediatría"));
-            MedicoList.Add(new Medico("Laura", "Martínez", "Gómez", "Cardiología"));
-            MedicoList.Add(new Medico("Andrés", "Ruiz", "Fernández", "Neurología"));
-            MedicoList.Add(new Medico("Elena", "Torres", "Domínguez", "Dermatología"));
-            MedicoList.Add(new Medico("Carlos", "Morales", "Vega", "Traumatología"));
-            MedicoList.Add(new Medico("Lucía", "Castro", "Jiménez", "Oftalmología"));
-            MedicoList.Add(new Medico("Javier", "Serrano", "Muñoz", "Psiquiatría"));
-            MedicoList.Add(new Medico("María", "Ramos", "Pérez", "Oncología"));
-            MedicoList.Add(new Medico("Sofía", "Navarro", "Luna", "Endocrinología"));
+            PersonaList.Add(new Medico("Manuel","López","Carrasco","Ginecología"));
+            PersonaList.Add(new Medico("Pedro", "De la Cruz", "Sánchez", "Pediatría"));
+            PersonaList.Add(new Medico("Laura", "Martínez", "Gómez", "Cardiología"));
+            PersonaList.Add(new Medico("Andrés", "Ruiz", "Fernández", "Neurología"));
+            PersonaList.Add(new Medico("Carlos", "Morales", "Vega", "Traumatología"));
+            PersonaList.Add(new Medico("Lucía", "Castro", "Jiménez", "Oftalmología"));
+            PersonaList.Add(new Medico("Javier", "Serrano", "Muñoz", "Psiquiatría"));
+            PersonaList.Add(new Medico("María", "Ramos", "Pérez", "Oncología"));
+            PersonaList.Add(new Medico("Sofía", "Navarro", "Luna", "Endocrinología"));
         }
         public void CargaInicPacientes()
         {
-            PacList.Add(new Paciente("Eduardo", "Herrera", "Costa"));
-            PacList.Add(new Paciente("Sebastián", "Ribera", "Lara"));
-            PacList.Add(new Paciente("María", "González", "Ruiz"));
-            PacList.Add(new Paciente("Andrés", "López", "Morales"));
-            PacList.Add(new Paciente("Lucía", "Martínez", "Santos"));
-            PacList.Add(new Paciente("Javier", "Torres", "Pérez"));
-            PacList.Add(new Paciente("Elena", "Jiménez", "Castro"));
-            PacList.Add(new Paciente("Carlos", "Navarro", "Vega"));
-            PacList.Add(new Paciente("Sofía", "Domínguez", "Luna"));
-            PacList.Add(new Paciente("Alejandro", "Ramos", "García"));
-            PacList.Add(new Paciente("Paula", "Serrano", "Fernández"));
-            PacList.Add(new Paciente("Diego", "Núñez", "Martín"));
-            PacList.Add(new Paciente("Claudia", "Moreno", "Ibáñez"));
-            PacList.Add(new Paciente("Fernando", "Cano", "Delgado"));
-            PacList.Add(new Paciente("Isabel", "Vidal", "Romero"));
-            PacList.Add(new Paciente("Miguel", "Crespo", "León"));
-            PacList.Add(new Paciente("Patricia", "Suárez", "Molina"));
-            PacList.Add(new Paciente("Raúl", "Reyes", "Ortega"));
-            PacList.Add(new Paciente("Nuria", "Flores", "Campos"));
-            PacList.Add(new Paciente("Daniel", "Cruz", "Santiago"));
+            PersonaList.Add(new Paciente("Eduardo", "Herrera", "Costa"));
+            PersonaList.Add(new Paciente("Sebastián", "Ribera", "Lara"));
+            PersonaList.Add(new Paciente("María", "González", "Ruiz"));
+            PersonaList.Add(new Paciente("Andrés", "López", "Morales"));
+            PersonaList.Add(new Paciente("Lucía", "Martínez", "Santos"));
+            PersonaList.Add(new Paciente("Javier", "Torres", "Pérez"));
+            PersonaList.Add(new Paciente("Elena", "Jiménez", "Castro"));
+            PersonaList.Add(new Paciente("Carlos", "Navarro", "Vega"));
+            PersonaList.Add(new Paciente("Sofía", "Domínguez", "Luna"));
+            PersonaList.Add(new Paciente("Alejandro", "Ramos", "García"));
+            PersonaList.Add(new Paciente("Paula", "Serrano", "Fernández"));
+            PersonaList.Add(new Paciente("Diego", "Núñez", "Martín"));
+            PersonaList.Add(new Paciente("Claudia", "Moreno", "Ibáñez"));
+            PersonaList.Add(new Paciente("Fernando", "Cano", "Delgado"));
+            PersonaList.Add(new Paciente("Isabel", "Vidal", "Romero"));
+            PersonaList.Add(new Paciente("Miguel", "Crespo", "León"));
+            PersonaList.Add(new Paciente("Patricia", "Suárez", "Molina"));
+            PersonaList.Add(new Paciente("Raúl", "Reyes", "Ortega"));
+            PersonaList.Add(new Paciente("Nuria", "Flores", "Campos"));
+            PersonaList.Add(new Paciente("Daniel", "Cruz", "Santiago"));
         }
 
         public void CargaInicAdmin()
         {
-            AdminList.Add(new Administrativo("Manuel", "Crespo", "Martí", "Informática"));
-            AdminList.Add(new Administrativo("Pedro", "Luna", "Mas", "Contabilidad"));
-            AdminList.Add(new Administrativo("Laura", "Sánchez", "Ruiz", "Recursos Humanos"));
-            AdminList.Add(new Administrativo("Carlos", "Moreno", "Díaz", "Finanzas"));
-            AdminList.Add(new Administrativo("María", "Gómez", "Navarro", "Recursos Humanos"));
-            AdminList.Add(new Administrativo("Javier", "Torres", "Pérez", "Compras"));
-            AdminList.Add(new Administrativo("Lucía", "Romero", "Castillo", "Logística"));
-            AdminList.Add(new Administrativo("Andrés", "Fernández", "Gil", "Atención al Paciente"));
-            AdminList.Add(new Administrativo("Sofía", "Vega", "Ortega", "Legal"));
-            AdminList.Add(new Administrativo("Elena", "Martínez", "Ramos", "Informática"));
+            PersonaList.Add(new Administrativo("Manuel", "Crespo", "Martí", "Informática"));
+            PersonaList.Add(new Administrativo("Pedro", "Luna", "Mas", "Contabilidad"));
+            PersonaList.Add(new Administrativo("Laura", "Sánchez", "Ruiz", "Recursos Humanos"));
+            PersonaList.Add(new Administrativo("Carlos", "Moreno", "Díaz", "Finanzas"));
+            PersonaList.Add(new Administrativo("María", "Gómez", "Navarro", "Recursos Humanos"));
+            PersonaList.Add(new Administrativo("Javier", "Torres", "Pérez", "Compras"));
+            PersonaList.Add(new Administrativo("Lucía", "Romero", "Castillo", "Logística"));
+            PersonaList.Add(new Administrativo("Andrés", "Fernández", "Gil", "Atención al Paciente"));
+            PersonaList.Add(new Administrativo("Sofía", "Vega", "Ortega", "Legal"));
+            PersonaList.Add(new Administrativo("Elena", "Martínez", "Ramos", "Informática"));
         }
         public void ListaMedicos()
         {
@@ -342,8 +332,9 @@ namespace Hospital
             Console.WriteLine("Listado de Médicos");
             Console.WriteLine("------------------");
 
-            foreach (Medico med in MedicoList)
-                Console.WriteLine(med);
+            foreach (Persona per in PersonaList)
+                if (per is Medico)
+                    Console.WriteLine(per);
 
             Console.ReadKey();
         }
@@ -353,8 +344,9 @@ namespace Hospital
             Console.WriteLine("Listado de Pacientes");
             Console.WriteLine("--------------------");
 
-            foreach (Paciente pac in PacList)
-                Console.WriteLine(pac);
+            foreach (Persona per in PersonaList)
+                if (per is Paciente)
+                    Console.WriteLine(per);
 
             Console.ReadKey();
         }
