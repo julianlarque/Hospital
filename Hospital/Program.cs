@@ -33,15 +33,38 @@ namespace Hospital
                 switch (seleccion)
                 {
                     case '1':
+                        // Alta Médico
                         miHospital.PersonaList.Add(Medico.Alta());
                         break;
 
                     case '2':
-                        p = Medico.Baja(miHospital.PersonaList);
+                        // Baja Médico
+                        Console.Clear();
+                        Console.WriteLine("### BAJA DE MÉDICOS ####");
+                        Console.WriteLine("------------------------");
+                        Console.WriteLine();
+                        Console.Write("Primer Apellido : ");
+                        string ape1 = Console.ReadLine();
+                        Console.WriteLine();
+                        p=miHospital.BuscaPersona(ape1, "Medico");
                         if (p != null)
+                        {
                             miHospital.PersonaList.Remove(p);
-                        break;
+                            Console.WriteLine($"{p} dado de baja correctamente");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Error, médico de apellido {ape1} no encontrado!!!");
+                        }
 
+                        Console.ReadKey();
+                        break;
+                    /*
+                    p = Medico.Baja(miHospital.PersonaList);
+                    if (p != null)
+                        miHospital.PersonaList.Remove(p);
+                    break;
+                    */
                     case '3':
                         miHospital.PersonaList.Add(Paciente.Alta());
                         break;

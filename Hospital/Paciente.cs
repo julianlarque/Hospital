@@ -8,7 +8,7 @@ namespace Hospital
 {
     internal class Paciente : Persona
     {
-        public List<string> Enfermedades;
+        public List<string> Enfermedades { get; set; }
 
         public Paciente()
         {

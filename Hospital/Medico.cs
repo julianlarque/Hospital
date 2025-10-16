@@ -8,10 +8,10 @@ namespace Hospital
 {
     internal class Medico : Empleado
     {
-        public string Especialidad;
+        public string Especialidad { get; set; }
 
         // Lista de pacientes asignados al médico
-        public List<Paciente> Pacs;
+        public List<Paciente> Pacs { get; set; }
 
         public Medico()
         {
@@ -52,8 +52,6 @@ namespace Hospital
         public override string ToString()
         {
             return $"Doctor/a {Nombre} {Apellido1} {Apellido2} de especialidad {Especialidad}";
-
-
         }
         public static Medico Alta()
         {

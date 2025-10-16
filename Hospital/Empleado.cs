@@ -8,8 +8,8 @@ namespace Hospital
 {
     internal class Empleado : Persona
     {
-        public double Sueldo = 0;
-        public string Departamento;
+        public double Sueldo { get; set; }
+        public string Departamento { get; set; }
 
         public Empleado()
         {

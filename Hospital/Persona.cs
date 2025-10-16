@@ -8,12 +8,12 @@ namespace Hospital
 {
     internal class Persona
     {
-        public string Nombre;
-        public string Apellido1;
-        public string Apellido2;
+        public string Nombre { get; set; } 
+        public string Apellido1 { get; set; }
+        public string Apellido2 { get; set; }
 
-        public string Telefono = "";
-        public string Direccion = "";
+        public string Telefono { get; set; }
+        public string Direccion { get; set; }
 
         public Persona()
         {

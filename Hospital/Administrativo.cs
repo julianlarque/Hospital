@@ -8,7 +8,7 @@ namespace Hospital
 {
     internal class Administrativo : Empleado
     {
-        public string Departamento = ""; //Informática, Administración, Información
+        public string Departamento {get; set; }
 
         public Administrativo()
         {

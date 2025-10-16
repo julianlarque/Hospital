@@ -9,16 +9,14 @@ namespace Hospital
 {
     internal class Hospital
     {
-        public string Nombre;
-        public List<Persona> PersonaList;
+        public string Nombre { get; set; }
+        public List<Persona> PersonaList { get; set; }  
 
         public Hospital (string nombre)
         {
             Nombre = nombre;
             PersonaList = new List<Persona>();
         }
-
-      
         public void AsignacionPaciente()
         {
             bool existe = false;
@@ -216,6 +214,16 @@ namespace Hospital
                     return true;
             }
             return false;
+        }
+
+        public Persona BuscaPersona(string ape1, string tipo)
+        {
+            foreach (Persona per in PersonaList)
+            {
+                if ((per.Apellido1 == ape1) && (per.GetType().Name == tipo))
+                    return per;
+            }
+            return null;
         }
     }
 }
