@@ -29,8 +29,8 @@ namespace Hospital
                     3 - Alta Paciente                      C - Listado de Pacientes
                     4 - Baja Paciente
                     5 - Asignar Médico a Paciente          D - Listado de Pacientes por Médico
-                    6 - Gestión de Citas
-                    7 - Historial Médico de Paciente
+                    6 - Modificar datos de Personas
+                    7 - 
                     8 - 
                     9 - 
 

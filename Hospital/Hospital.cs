@@ -18,7 +18,7 @@ namespace Hospital
             PersonaList = new List<Persona>();
         }
 
-        public void AltaMedico()
+       /* public void AltaMedico()
         {
             string nom1;
             string ape1;
@@ -55,7 +55,8 @@ namespace Hospital
                     break;
             }
         }
-
+       */
+       /*
         public void BajaMedico()
         {
             bool existe = false;
@@ -89,7 +90,7 @@ namespace Hospital
             Console.WriteLine("Pulsa cualquier tecla para continuar");
             Console.ReadKey();
         }
-
+       */
         public void AsignacionPaciente()
         {
             bool existe = false;
@@ -195,6 +196,8 @@ namespace Hospital
                 return;
             }
         }
+        
+        /*
         public void AltaPaciente()
         {
             string nom1;
@@ -267,6 +270,7 @@ namespace Hospital
             Console.WriteLine("Pulsa cualquier tecla para continuar");
             Console.ReadKey();
         }
+        */
 
         public void ListadoGeneral()
         {

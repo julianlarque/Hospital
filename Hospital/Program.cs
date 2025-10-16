@@ -11,6 +11,7 @@ namespace Hospital
         static void Main(string[] args)
         {
             char seleccion = ' ';
+            Persona p = new Persona();
 
             Hospital miHospital = new Hospital("Hospital de Barcelona");
 
@@ -22,7 +23,6 @@ namespace Hospital
 
             while (true) 
             { 
-            
                 seleccion = miMenu.Opcion();
                 if (seleccion == 'S')
                 {
@@ -33,19 +33,29 @@ namespace Hospital
                 switch (seleccion)
                 {
                     case '1':
-                        miHospital.AltaMedico();
+                        miHospital.PersonaList.Add(Medico.Alta());
                         break;
 
                     case '2':
-                        miHospital.BajaMedico();
+                        p = Medico.Baja(miHospital.PersonaList);
+                        if (p != null)
+                            miHospital.PersonaList.Remove(p);
                         break;
 
                     case '3':
-                        miHospital.AltaPaciente(); 
+                        miHospital.PersonaList.Add(Paciente.Alta());
                         break;
                     
                     case '4':
-                        miHospital.BajaPaciente();
+                        p = Paciente.Baja(miHospital.PersonaList);
+                        if (p != null)
+                        {
+                            miHospital.PersonaList.Remove(p);
+                            // También lo desasignamos de los médicos que lo tengan
+                            foreach (Persona med in miHospital.PersonaList)
+                                if (med is Medico)
+                                        ((Medico)med).BajaPaciente((Paciente)p);
+                        }
                         break;
 
                     case '5':
