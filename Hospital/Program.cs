@@ -52,19 +52,19 @@ namespace Hospital
                         miHospital.AsignacionPaciente();
                         break;
 
-                    case '6':
+                    case 'B':
                         miHospital.ListaMedicos();
                         break;
 
-                    case '7':
+                    case 'C':
                         miHospital.ListaPacientes();
                         break;
 
-                    case '8':
+                    case 'D':
                         miHospital.PacsporMedico();
                         break;
 
-                    case '9':
+                    case 'A':
                         miHospital.ListadoGeneral();
                         break;
                 }

@@ -19,17 +19,20 @@ namespace Hospital
             Console.Clear();
             Console.Write(@"
 
-                    GESTIÓN DE UN HOSPITAL
 
-                    1 - Alta Médico
-                    2 - Baja Médico
-                    3 - Alta Paciente
+                                     ---- GESTIÓN DE UN HOSPITAL ----
+
+
+
+                    1 - Alta Médico                        A - Listado completo de Personas
+                    2 - Baja Médico                        B - Listado de Médicos                     
+                    3 - Alta Paciente                      C - Listado de Pacientes
                     4 - Baja Paciente
-                    5 - Asignar Médico a Paciente
-                    6 - Lista Médicos
-                    7 - Lista Pacientes
-                    8 - Lista Pacientes por Médico
-                    9 - Listado completo Personas
+                    5 - Asignar Médico a Paciente          D - Listado de Pacientes por Médico
+                    6 - Gestión de Citas
+                    7 - Historial Médico de Paciente
+                    8 - 
+                    9 - 
 
                     S - Salir
 
