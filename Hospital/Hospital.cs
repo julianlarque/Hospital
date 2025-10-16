@@ -207,5 +207,15 @@ namespace Hospital
 
             Console.ReadKey();
         }
+
+        public bool Existe(string ape1,string tipo)
+        {
+            foreach (Persona per in PersonaList)
+            {
+                if ((per.Apellido1 == ape1) && (per.GetType().Name == tipo))
+                    return true;
+            }
+            return false;
+        }
     }
 }
