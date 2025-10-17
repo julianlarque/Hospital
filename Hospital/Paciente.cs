@@ -100,5 +100,76 @@ namespace Hospital
                 return null;
 
         }
+
+        public static void EsqueletoFicha()
+        {
+            Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine(@"
+                             ### FICHA DE PACIENTE ####
+                             --------------------------
+
+   Nombre          :
+   Primer Apellido : 
+   Segundo Apellido:
+
+   Teléfono        : 
+   Dirección       :
+                                                                          ");
+
+        }
+        public void PantallaModificacion()
+        {
+            string entrada = "";
+
+            EsqueletoFicha();
+
+            Console.SetCursorPosition(21, 5);
+            Console.Write(this.Nombre);
+            Console.SetCursorPosition(21, 6);
+            Console.Write(this.Apellido1);
+            Console.SetCursorPosition(21, 7);
+            Console.Write(this.Apellido2);
+            
+            Console.SetCursorPosition(21, 9);
+            Console.Write(this.Telefono);
+            Console.SetCursorPosition(21, 10);
+            Console.Write(this.Direccion);
+
+            Console.SetCursorPosition(1, 14);
+            Console.WriteLine("Introduzca los nuevos datos (Intro para no modificar)");
+
+            // Modificamos los datos
+            Console.SetCursorPosition(21, 5);
+            entrada = Console.ReadLine();
+            if (entrada != "")
+                this.Nombre = entrada;
+
+            Console.SetCursorPosition(21, 6);
+            entrada = Console.ReadLine();
+            if (entrada != "")
+                this.Apellido1 = entrada;
+
+            Console.SetCursorPosition(21, 7);
+            entrada = Console.ReadLine();
+            if (entrada != "")
+                this.Apellido2 = entrada;
+
+            Console.SetCursorPosition(21, 9);
+            entrada = Console.ReadLine();
+            if (entrada != "")
+                this.Telefono = entrada;
+
+            Console.SetCursorPosition(21, 10);
+            entrada = Console.ReadLine();
+            if (entrada != "")
+                this.Direccion = entrada;
+
+            // Finalizamos
+            Console.SetCursorPosition(0, 14);
+            Console.WriteLine($"{this} modificado correctamente");
+
+            Console.ReadKey();
+        }
     }
 }

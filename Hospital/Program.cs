@@ -55,10 +55,12 @@ namespace Hospital
                         break;
                     
                     case '3':
+                        // Alta Paciente
                         miHospital.PersonaList.Add(Paciente.Alta());
                         break;
                     
                     case '4':
+                        // Baja Paciente
                         p = Paciente.Baja(miHospital.PersonaList);
                         if (p != null)
                         {
@@ -75,7 +77,7 @@ namespace Hospital
                         break;
 
                     case '6':
-                        //Modificación Médico
+                        //Modificación/Consulta Médico
                         Medico.EsqueletoFicha();
                         Console.SetCursorPosition(21,6);
                         ape1 = Console.ReadLine();
@@ -92,7 +94,25 @@ namespace Hospital
                             ((Medico)p).PantallaModificacion();
                             break;
                         }
-                           
+
+                    case '7':
+                        //Modificación/Consulta Paciente
+                        Paciente.EsqueletoFicha();
+                        Console.SetCursorPosition(21, 6);
+                        ape1 = Console.ReadLine();
+                        p = miHospital.BuscaPersona(ape1, "Paciente");
+                        if (p == null)
+                        {
+                            Console.SetCursorPosition(1, 15);
+                            Console.WriteLine($"Error, paciente de apellido {ape1} no encontrado!!!");
+                            Console.ReadKey();
+                            break;
+                        }
+                        else
+                        {
+                            ((Paciente)p).PantallaModificacion();
+                            break;
+                        }
                     case 'B':
                         miHospital.ListaMedicos();
                         break;
