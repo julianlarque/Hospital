@@ -11,6 +11,7 @@ namespace Hospital
         static void Main(string[] args)
         {
             char seleccion = ' ';
+            string ape1 = "";
             Persona p = new Persona();
 
             Hospital miHospital = new Hospital("Hospital de Barcelona");
@@ -34,19 +35,13 @@ namespace Hospital
                 {
                     case '1':
                         // Alta Médico
-                        miHospital.PersonaList.Add(Medico.Alta());
+                        miHospital.PersonaList.Add(Medico.PantallaAlta());
                         break;
 
                     case '2':
                         // Baja Médico
-                        Console.Clear();
-                        Console.WriteLine("### BAJA DE MÉDICOS ####");
-                        Console.WriteLine("------------------------");
-                        Console.WriteLine();
-                        Console.Write("Primer Apellido : ");
-                        string ape1 = Console.ReadLine();
-                        Console.WriteLine();
-                        p=miHospital.BuscaPersona(ape1, "Medico");
+                        ape1 = Medico.PantallaBaja();
+                        p =miHospital.BuscaPersona(ape1, "Medico");
                         if (p != null)
                         {
                             miHospital.PersonaList.Remove(p);
@@ -56,15 +51,9 @@ namespace Hospital
                         {
                             Console.WriteLine($"Error, médico de apellido {ape1} no encontrado!!!");
                         }
-
                         Console.ReadKey();
                         break;
-                    /*
-                    p = Medico.Baja(miHospital.PersonaList);
-                    if (p != null)
-                        miHospital.PersonaList.Remove(p);
-                    break;
-                    */
+                    
                     case '3':
                         miHospital.PersonaList.Add(Paciente.Alta());
                         break;
@@ -85,6 +74,25 @@ namespace Hospital
                         miHospital.AsignacionPaciente();
                         break;
 
+                    case '6':
+                        //Modificación Médico
+                        Medico.EsqueletoFicha();
+                        Console.SetCursorPosition(21,6);
+                        ape1 = Console.ReadLine();
+                        p = miHospital.BuscaPersona(ape1, "Medico");
+                        if (p == null)
+                        {
+                            Console.SetCursorPosition(1, 15);
+                            Console.WriteLine($"Error, médico de apellido {ape1} no encontrado!!!");
+                            Console.ReadKey();
+                            break;
+                        }
+                        else
+                        {
+                            ((Medico)p).PantallaModificacion();
+                            break;
+                        }
+                           
                     case 'B':
                         miHospital.ListaMedicos();
                         break;

@@ -29,7 +29,7 @@ namespace Hospital
                     3 - Alta Paciente                      C - Listado de Pacientes
                     4 - Baja Paciente
                     5 - Asignar Médico a Paciente          D - Listado de Pacientes por Médico
-                    6 - Modificar datos de Personas
+                    6 - Modificar Médico
                     7 - 
                     8 - 
                     9 - 

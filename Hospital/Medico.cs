@@ -53,7 +53,7 @@ namespace Hospital
         {
             return $"Doctor/a {Nombre} {Apellido1} {Apellido2} de especialidad {Especialidad}";
         }
-        public static Medico Alta()
+        public static Medico PantallaAlta()
         {
             string nom1;
             string ape1;
@@ -129,7 +129,149 @@ namespace Hospital
                 return null;
         }
 
+        public static string PantallaBaja()
+        {
+            Console.Clear();
+            Console.WriteLine("### BAJA DE MÉDICOS ####");
+            Console.WriteLine("------------------------");
+            Console.WriteLine();
+            Console.Write("Primer Apellido : ");
+            string ape1 = Console.ReadLine();
+            return ape1;
+        }
 
+        public void PantallaModificacion()
+        {
+            string entrada = "";
+
+            Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine("        ### FICHA DE MÉDICO ####");
+            Console.WriteLine("        ------------------------");
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("   Nombre          : " +this.Nombre);           
+            Console.WriteLine("   Primer Apellido : " +this.Apellido1);
+            Console.WriteLine("   Segundo Apellido: " +this.Apellido2);
+            Console.WriteLine("   Especialidad    : " +this.Especialidad);
+            Console.WriteLine();
+            Console.WriteLine("   Sueldo          : " + this.Sueldo);
+            Console.WriteLine("   Teléfono        : " + this.Telefono);
+            Console.WriteLine("   Dirección       : " + this.Direccion);
+            Console.WriteLine();
+
+            Console.WriteLine("Introduzca los nuevos datos (Intro para no modificar)");
+
+            // Modificamos los datos
+            Console.SetCursorPosition(21,5);
+            entrada = Console.ReadLine();   
+            if(entrada != "")
+                this.Nombre = entrada;
+
+            Console.SetCursorPosition(21, 6);
+            entrada = Console.ReadLine();
+            if (entrada != "")
+                this.Apellido1 = entrada;
+
+            Console.SetCursorPosition(21, 7);
+            entrada = Console.ReadLine();
+            if (entrada != "")
+                this.Apellido2 = entrada;
+
+            Console.SetCursorPosition(21, 8);
+            entrada = Console.ReadLine();
+            if (entrada != "")
+                this.Especialidad = entrada;
+
+            // Campos adicionales
+            Console.SetCursorPosition(21, 10);
+            entrada = Console.ReadLine();
+            if (entrada != "")
+                this.Sueldo = double.Parse(entrada);
+
+            Console.SetCursorPosition(21, 11);
+            entrada = Console.ReadLine();
+            if (entrada != "")
+                this.Telefono = entrada;
+
+            Console.SetCursorPosition(21, 12);
+            entrada = Console.ReadLine();
+            if (entrada != "")
+                this.Direccion = entrada;
+
+            // Finalizamos
+            Console.SetCursorPosition(1, 15);
+            Console.WriteLine();
+            Console.WriteLine($"{this} modificado correctamente");
+
+            //Console.WriteLine("Pulsa cualquier tecla");
+            Console.ReadKey();
+        }
+        public static void EsqueletoFicha()
+        {
+            Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine("        ### FICHA DE MÉDICO ####");
+            Console.WriteLine("        ------------------------");
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("   Nombre          : " );
+            Console.WriteLine("   Primer Apellido : " );
+            Console.WriteLine("   Segundo Apellido: " );
+            Console.WriteLine("   Especialidad    : " );
+            Console.WriteLine();
+            Console.WriteLine("   Sueldo          : " );
+            Console.WriteLine("   Teléfono        : " );
+            Console.WriteLine("   Dirección       : " );
+            Console.WriteLine();
+
+            //Console.WriteLine("Introduzca los nuevos datos (Intro para no modificar)");
+/*
+            // Modificamos los datos
+            Console.SetCursorPosition(21, 5);
+            entrada = Console.ReadLine();
+            if (entrada != "")
+                this.Nombre = entrada;
+
+            Console.SetCursorPosition(21, 6);
+            entrada = Console.ReadLine();
+            if (entrada != "")
+                this.Apellido1 = entrada;
+
+            Console.SetCursorPosition(21, 7);
+            entrada = Console.ReadLine();
+            if (entrada != "")
+                this.Apellido2 = entrada;
+
+            Console.SetCursorPosition(21, 8);
+            entrada = Console.ReadLine();
+            if (entrada != "")
+                this.Especialidad = entrada;
+
+            // Campos adicionales
+            Console.SetCursorPosition(21, 10);
+            entrada = Console.ReadLine();
+            if (entrada != "")
+                this.Sueldo = double.Parse(entrada);
+
+            Console.SetCursorPosition(21, 11);
+            entrada = Console.ReadLine();
+            if (entrada != "")
+                this.Telefono = entrada;
+
+            Console.SetCursorPosition(21, 12);
+            entrada = Console.ReadLine();
+            if (entrada != "")
+                this.Direccion = entrada;
+
+            // Finalizamos
+            Console.SetCursorPosition(1, 15);
+            Console.WriteLine();
+            Console.WriteLine($"{this} modificado correctamente");
+
+            //Console.WriteLine("Pulsa cualquier tecla");
+            Console.ReadKey();
+*/
+        }
     }
-
 }
