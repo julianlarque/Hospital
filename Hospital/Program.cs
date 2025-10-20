@@ -35,7 +35,7 @@ namespace Hospital
                 {
                     case '1':
                         // Alta Médico
-                        miHospital.PersonaList.Add(Medico.PantallaAlta());
+                        miHospital.PersonaList.Add(Medico.PantallaAlta2());
                         break;
 
                     case '2':
@@ -56,21 +56,35 @@ namespace Hospital
                     
                     case '3':
                         // Alta Paciente
-                        miHospital.PersonaList.Add(Paciente.Alta());
+                        miHospital.PersonaList.Add(Paciente.PantallaAlta2());
                         break;
                     
                     case '4':
                         // Baja Paciente
-                        p = Paciente.Baja(miHospital.PersonaList);
+                        ape1 = Paciente.PantallaBaja();
+                        p = miHospital.BuscaPersona(ape1, "Paciente");
                         if (p != null)
                         {
                             miHospital.PersonaList.Remove(p);
-                            // También lo desasignamos de los médicos que lo tengan
-                            foreach (Persona med in miHospital.PersonaList)
-                                if (med is Medico)
-                                        ((Medico)med).BajaPaciente((Paciente)p);
+                            Console.WriteLine($"{p} dado de baja correctamente");
                         }
+                        else
+                        {
+                            Console.WriteLine($"Error, paciente de apellido {ape1} no encontrado!!!");
+                        }
+                        Console.ReadKey();
                         break;
+                    /*
+                    p = Paciente.Baja(miHospital.PersonaList);
+                    if (p != null)
+                    {
+                        miHospital.PersonaList.Remove(p);
+                        // También lo desasignamos de los médicos que lo tengan
+                        foreach (Persona med in miHospital.PersonaList)
+                            if (med is Medico)
+                                    ((Medico)med).BajaPaciente((Paciente)p);
+                    }
+                    break;*/
 
                     case '5':
                         miHospital.AsignacionPaciente();

@@ -85,6 +85,60 @@ namespace Hospital
             Console.ReadKey();
             return medico1;
         }
+        public static Medico PantallaAlta2()
+        {
+            string entrada = "";
+            Medico med = new Medico();
+
+            EsqueletoFicha();
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.SetCursorPosition(12, 3);
+            Console.WriteLine("--- ALTA ---");
+            Console.ResetColor();
+
+            Console.SetCursorPosition(1, 14);
+            Console.WriteLine("Introduzca los datos del nuevo Médico");
+
+            // Modificamos los datos
+            Console.SetCursorPosition(21, 5);
+            entrada = Console.ReadLine();
+            med.Nombre = entrada;
+
+            Console.SetCursorPosition(21, 6);
+            entrada = Console.ReadLine();
+            med.Apellido1 = entrada;
+
+            Console.SetCursorPosition(21, 7);
+            entrada = Console.ReadLine();
+            med.Apellido2 = entrada;
+
+            Console.SetCursorPosition(21, 8);
+            entrada = Console.ReadLine();
+            med.Especialidad = entrada;
+
+            // Campos adicionales
+            
+            Console.SetCursorPosition(21, 10);
+            med.Sueldo = Util.LeerDouble("",21,10);
+           
+            Console.SetCursorPosition(21, 11);
+            entrada = Console.ReadLine();
+            med.Telefono = entrada;
+
+            Console.SetCursorPosition(21, 12);
+            entrada = Console.ReadLine();
+            med.Direccion = entrada;
+
+            // Finalizamos
+            Console.SetCursorPosition(0, 14);
+            Console.WriteLine($"{med} creado correctamente");
+
+            Console.ReadKey();
+
+            return med;
+
+        }
 
         public static Persona Baja(List<Persona> pList)
         {
@@ -95,8 +149,9 @@ namespace Hospital
             Persona med = new Persona();
 
             Console.Clear();
-            Console.WriteLine("### BAJA DE MÉDICOS ####");
-            Console.WriteLine("------------------------");
+            Console.WriteLine();    
+            Console.WriteLine("### BAJA DE UN MÉDICO ####");
+            Console.WriteLine("--------------------------");
             Console.WriteLine();
 
             Console.Write("Primer Apellido : ");
@@ -133,8 +188,9 @@ namespace Hospital
         public static string PantallaBaja()
         {
             Console.Clear();
-            Console.WriteLine("### BAJA DE MÉDICOS ####");
-            Console.WriteLine("------------------------");
+            Console.WriteLine();
+            Console.WriteLine("### BAJA DE UN MÉDICO ####");
+            Console.WriteLine("--------------------------");
             Console.WriteLine();
             Console.Write("Primer Apellido : ");
             string ape1 = Console.ReadLine();
@@ -187,11 +243,8 @@ namespace Hospital
                 this.Especialidad = entrada;
 
             // Campos adicionales
-            Console.SetCursorPosition(21, 10);
-            entrada = Console.ReadLine();
-            if (entrada != "")
-                this.Sueldo = double.Parse(entrada);
-
+            this.Sueldo = Util.LeerDouble("", 21, 10);
+            
             Console.SetCursorPosition(21, 11);
             entrada = Console.ReadLine();
             if (entrada != "")
@@ -211,10 +264,12 @@ namespace Hospital
         public static void EsqueletoFicha()
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine();
             Console.WriteLine("        ### FICHA DE MÉDICO ####");
             Console.WriteLine("        ------------------------");
             Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine();
             Console.WriteLine("   Nombre          : " );
             Console.WriteLine("   Primer Apellido : " );
@@ -226,6 +281,7 @@ namespace Hospital
             Console.WriteLine("   Dirección       : " );
             Console.WriteLine();
 
+            Console.ResetColor();
         }
     }
 }

@@ -59,6 +59,7 @@ namespace Hospital
             Persona p = new Persona();
 
             Console.Clear();
+            Console.WriteLine();    
             Console.WriteLine("### BAJA DE PACIENTES ####");
             Console.WriteLine("--------------------------");
             Console.WriteLine();
@@ -104,6 +105,7 @@ namespace Hospital
         public static void EsqueletoFicha()
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine();
             Console.WriteLine(@"
                              ### FICHA DE PACIENTE ####
@@ -116,6 +118,7 @@ namespace Hospital
    Teléfono        : 
    Dirección       :
                                                                           ");
+            Console.ResetColor();
 
         }
         public void PantallaModificacion()
@@ -167,9 +170,68 @@ namespace Hospital
 
             // Finalizamos
             Console.SetCursorPosition(0, 14);
-            Console.WriteLine($"{this} modificado correctamente");
+            Console.WriteLine($"{this} modificado correctamente                 ");
 
             Console.ReadKey();
+        }
+        public static Paciente PantallaAlta2()
+        {
+            string entrada = "";
+            Paciente pac = new Paciente();
+
+            EsqueletoFicha();
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.SetCursorPosition(36, 4);
+            Console.WriteLine("--- ALTA ---");
+            Console.ResetColor();
+
+            Console.SetCursorPosition(1, 14);
+            Console.WriteLine("Introduzca los datos del nuevo Paciente");
+
+            // Modificamos los datos
+            Console.SetCursorPosition(21, 5);
+            entrada = Console.ReadLine();
+            pac.Nombre = entrada;
+
+            Console.SetCursorPosition(21, 6);
+            entrada = Console.ReadLine();
+            pac.Apellido1 = entrada;
+
+            Console.SetCursorPosition(21, 7);
+            entrada = Console.ReadLine();
+            pac.Apellido2 = entrada;
+
+
+            // Campos adicionales
+
+            Console.SetCursorPosition(21, 9);
+            entrada = Console.ReadLine();
+            pac.Telefono = entrada;
+
+            Console.SetCursorPosition(21, 10);
+            entrada = Console.ReadLine();
+            pac.Direccion = entrada;
+
+            // Finalizamos
+            Console.SetCursorPosition(0, 14);
+            Console.WriteLine($"{pac} creado correctamente");
+
+            Console.ReadKey();
+
+            return pac;
+
+        }
+        public static string PantallaBaja()
+        {
+            Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine("### BAJA DE UN PACIENTE ####");
+            Console.WriteLine("--------------------------");
+            Console.WriteLine();
+            Console.Write("Primer Apellido : ");
+            string ape1 = Console.ReadLine();
+            return ape1;
         }
     }
 }
